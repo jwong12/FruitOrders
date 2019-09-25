@@ -1,0 +1,106 @@
+body {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.custLabel {
+    display: inline-block;
+    width: 130px;
+}
+
+input {
+    width: 190px;
+}
+
+select {
+    width: 190px;
+    height: 27px;
+}
+
+button {
+    width: 130px;
+    height: 27px;
+}
+
+.errorMessage {
+    color: red;
+}
+
+option {
+    width: 150px;
+    height: 27px;
+}
+
+#orderForm {
+    display: inline-block;
+}
+
+#qty {
+    margin-left: 90px;
+    margin-right: 30px;
+}
+
+#qtyInput {
+    width: 65px;
+    text-align: right;
+}
+
+span {
+    padding: 5px;
+}
+
+table {
+    margin-left: 135px;
+}
+
+th {
+    text-align: left;
+    width: 75px;
+    padding-bottom: 7px;
+}
+
+td {
+    width: 75px;
+}
+
+#thMargin{
+    width: 150px;
+}
+
+#thQty {
+    text-align: right;
+}
+
+.trString {
+    width: 150px;
+}
+
+.tdNum {
+    text-align: right;
+    width: 75px;
+}
+
+.tdBorder {
+    padding-top: 4px;
+    border: 1px solid black;
+    border-style: solid none none none;
+}
+
+.tdTotal {
+    padding-bottom: 4px;
+    border-style: solid none solid none;
+}
+
+#deleteBut {
+    width: 70px;
+    border: none;
+    border-radius: 12px;
+}
+
+#deleteBut:hover {
+    background-color:DodgerBlue;
+    color:white;
+}
