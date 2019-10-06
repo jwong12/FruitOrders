@@ -17,15 +17,15 @@ export class Fruit {
 	template: `<h1>{{title}}</h1><br/>
 	<form #customerForm="ngForm">
 		<label class="custLabel">First Name</label>
-		<input type="text" pattern="[a-zA-Z'-]*" [(ngModel)]="selectedCustomer.first" name="firstName" #firstName="ngModel"> 
+		<input type="text" pattern="[a-zA-Z'-]*" [(ngModel)]="currentCustomer.first" name="firstName" #firstName="ngModel"> 
 		<span class="errorMessage" *ngIf="firstName?.errors?.pattern">Only alphabets, hyphens and apostrophes are allowed.</span><br/>
 		
 		<label class="custLabel">Last Name</label>
-		<input type="text" pattern="[a-zA-Z'-]*" [(ngModel)]="selectedCustomer.last" name="lastName" #lastName="ngModel">
+		<input type="text" pattern="[a-zA-Z'-]*" [(ngModel)]="currentCustomer.last" name="lastName" #lastName="ngModel">
 		<span class="errorMessage" *ngIf="lastName?.errors?.pattern">Only alphabets, hyphens and apostrophes are allowed.</span><br/>
 		
 		<label class="custLabel">Street Address</label>
-		<input type="text" required [(ngModel)]="selectedCustomer.streetAddr" name="address" #address="ngModel"><br/>
+		<input type="text" required [(ngModel)]="currentCustomer.streetAddr" name="address" #address="ngModel"><br/>
 		<button type="submit" [disabled]="!customerForm.form.valid" (click)=process()>Submit Address</button>
 		<span class="errorMessage" *ngIf="address?.errors?.required" [hidden]="address.pristine">The street address is required.</span><br/><br/>
 	</form>
@@ -74,7 +74,7 @@ export class Fruit {
 		</tr>
 	</table><br/>
 
-	<p *ngIf="isFormSubmitted">Order for {{selectedCustomer.first}} {{selectedCustomer.last}} at {{selectedCustomer.streetAddr}}.</p>`,
+	<p *ngIf="isFormSubmitted">Order for {{customerFirst}} {{customerLast}} at {{customerAddr}}.</p>`,
 	styleUrls: ['./app.component.css']
 })
 
@@ -88,8 +88,11 @@ export class AppComponent {
 	taxesTotal = 0.00;
 	total = 0.00;
 	orders:Array<Order> = [];
+	customerFirst: string;
+	customerLast: string;
+	customerAddr: string;
 
-	selectedCustomer:Customer = {
+	currentCustomer:Customer = {
 		first: '',
 		last: '',
 		streetAddr: ''
@@ -141,5 +144,8 @@ export class AppComponent {
 
 	process() {
 		this.isFormSubmitted = true;
+		this.customerFirst = this.currentCustomer.first;
+		this.customerLast = this.currentCustomer.last;
+		this.customerAddr = this.currentCustomer.streetAddr;
 	}
 }
